@@ -35,3 +35,10 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
     }
 }
+
+  ext {
+    // dependency versions
+    googlePlayServicesVersion = "<Your play services version>" // default: "16.1.0" - pre-AndroidX, override for AndroidX
+    compileSdkVersion = "<Your compile SDK version>" // default: 28
+    targetSdkVersion = "<Your target SDK version>" // default: 28
+  }

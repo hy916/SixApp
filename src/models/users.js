@@ -8,8 +8,8 @@ export default {
     userData: null,
     remember: false, // Whether to remember password
     formData: {
-      username: 'admin',
-      password: 'admin!',
+      username: '腻霸霸🍎',
+      password: '',
     },
   },
   reducers: {
@@ -19,24 +19,16 @@ export default {
       formData: { ...state.formData, ...payload },
     }),
   },
-  effects: dispatch => ({
+  effects: (dispatch) => ({
     // 登录
     async login(_, { users, global }) {
-      const data = await userLogin(users.formData);
-      if (data && data.token && data.data) {
-        await AsyncStorage.setItem('token', data.token);
-        // Cache username and password
-        if (users.remember) {
-          await AsyncStorage.setItem('cachLoginName', users.formData.loginName);
-          await AsyncStorage.setItem('cachPassword', users.formData.password);
-        }
-        await AsyncStorage.setItem('userData', JSON.stringify(data.data));
-        await dispatch.global.update({ token: data.token });
-        await this.update({ userData: data.data });
-        if (Global.navigation) {
-          // Global.navigation.navigate('Home');
-          Global.navigation.replace('Home');
-        }
+      const data = users.formData;
+      if (data.password != '666666') {
+        Alert.alert('用户名或密码不正确', '', [{ text: '确定' }]);
+        return;
+      }
+      if (Global.navigation) {
+        Global.navigation.replace('Home');
       } else if (data && data.message) {
         Alert.alert(`Login failed - ${data.error}`, data.message);
       }

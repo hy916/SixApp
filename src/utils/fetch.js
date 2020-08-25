@@ -28,7 +28,7 @@ export default async function request(url, options) {
     params.processData = false;
     params.contentType = false;
     let formdata = new FormData();
-    Object.keys(formdataBody).forEach(keyName => {
+    Object.keys(formdataBody).forEach((keyName) => {
       formdata.append(keyName, String(formdataBody[keyName]));
     });
     body = formdata;
@@ -43,18 +43,18 @@ export default async function request(url, options) {
     headers: { ...header },
     ...params,
   })
-    .then(async response => {
+    .then(async (response) => {
       const data = await response.json();
       if (/(200|201)/.test(response.status)) {
         return data;
       }
       if (/(401)/.test(response.status)) {
-        Global.navigation.navigate('SignIn')
-        return ;
+        Global.navigation.navigate('SignIn');
+        return;
       }
       Alert.alert(`Request Error ${response.status}`, `E2111: ${data.message} - ${fetchURL} - ${JSON.stringify(data)}`);
     })
-    .catch(error => {
-      Alert.alert('Service abnormal please check server', `E2112:${fetchURL} \n\n ${error.toString()} ${JSON.stringify(body)}`);
+    .catch((error) => {
+      // Alert.alert('Service abnormal please check server', `E2112:${fetchURL} \n\n ${error.toString()} ${JSON.stringify(body)}`);
     });
 }
