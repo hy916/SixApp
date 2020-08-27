@@ -1,6 +1,6 @@
 // import React, { Component } from 'react';
 // import { View, Text, SafeAreaView, StyleSheet, Image, Dimensions } from 'react-native';
-// import { Avatar } from '@uiw/react-native';
+// import { Avatar,Icon } from '@uiw/react-native';
 
 // const BadgeData = {
 //   data: [
@@ -115,14 +115,15 @@
 // });
 
 import React from 'react';
-import { View, Text, SectionList } from 'react-native';
+import { View, Text, SectionList, StyleSheet } from 'react-native';
+import { Avatar, Icon } from '@uiw/react-native';
 
 const HEIGHT = 50; // renderItem提前占据高度
 
 export default class extends React.Component {
   state = {
     sections: [
-      { title: '⭐️ 星标朋友', data: ['item1', 'item2', 'item3', 'item4'] },
+      { title: '⭐️ 星标朋友', data: ['张三', 'item2', '张三', '张三'] },
       {
         title: 'A',
         data: ['item1', 'item2', 'item1', 'item2', 'item1', 'item2', 'item1', 'item2', 'item1', 'item2', 'item1', 'item2', 'item1', 'item2', 'item1', 'item2'],
@@ -171,36 +172,42 @@ export default class extends React.Component {
 
   render() {
     return (
-      <View style={{ justifyContent: 'center', flexDirection: 'row' }}>
-        <SectionList
-          ref={'_sectionlist'}
-          style={{ backgroundColor: '#ffffff', marginTop: HEIGHT }}
-          stickySectionHeadersEnabled={true}
-          showsVerticalScrollIndicator={false}
-          sections={this.state.sections}
-          onScroll={this._onScroll}
-          renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}
-          getItemLayout={this._getItemLayout}
-          renderSectionHeader={this._renderSectionHeader}
-          ItemSeparatorComponent={this._ItemSeparatorComponent}
-        />
-        <View style={{ height: '100%', justifyContent: 'center' }}>
-          {Array.apply(null, Array(26)).map((a, i) => {
-            return (
-              <View
-                key={i}
-                hitSlop={{ top: 10, left: 10, bottom: 10, right: 10 }}
-                onStartShouldSetResponder={() => this._handleScrollTo(String.fromCharCode(65 + i))}
-                style={[
-                  this.state.currentIndex === String.fromCharCode(65 + i) && { backgroundColor: '#d4d4d4' },
-                  { justifyContent: 'center', alignItems: 'center', width: 17, height: 17, borderRadius: 8.5 },
-                ]}
-              >
-                <Text style={{ textAlign: 'center', color: '#007aff' }}>{String.fromCharCode(65 + i)}</Text>
-              </View>
-            );
-          })}
+      <View>
+        <View style={styles.header}>
+          <Icon name="search" size={18} color="#bfbfc0" style={{ marginRight: 10 }} />
+          <Text style={{ color: '#bfbfc0', fontSize: 18, fontWeight: '400' }}>搜索</Text>
+        </View>
+        <View style={{ justifyContent: 'center', flexDirection: 'row' }}>
+          <SectionList
+            ref={'_sectionlist'}
+            style={{ width: '100%' }}
+            stickySectionHeadersEnabled={true}
+            showsVerticalScrollIndicator={false}
+            sections={this.state.sections}
+            onScroll={this._onScroll}
+            renderItem={this._renderItem}
+            keyExtractor={this._keyExtractor}
+            getItemLayout={this._getItemLayout}
+            renderSectionHeader={this._renderSectionHeader}
+            ItemSeparatorComponent={this._ItemSeparatorComponent}
+          />
+          <View style={{ marginTop: '7.5%', height: '80%', justifyContent: 'center', backgroundColor: '#FFF' }}>
+            {Array.apply(null, Array(26)).map((a, i) => {
+              return (
+                <View
+                  key={i}
+                  hitSlop={{ top: 10, left: 10, bottom: 10, right: 10 }}
+                  onStartShouldSetResponder={() => this._handleScrollTo(String.fromCharCode(65 + i))}
+                  style={[
+                    this.state.currentIndex === String.fromCharCode(65 + i) && { backgroundColor: '#d4d4d4' },
+                    { justifyContent: 'center', alignItems: 'center', width: 17, height: 17, borderRadius: 8.5 },
+                  ]}
+                >
+                  <Text style={{ textAlign: 'center', color: '#007aff' }}>{String.fromCharCode(65 + i)}</Text>
+                </View>
+              );
+            })}
+          </View>
         </View>
       </View>
     );
@@ -215,3 +222,15 @@ export default class extends React.Component {
     }
   };
 }
+
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    margin: 10,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

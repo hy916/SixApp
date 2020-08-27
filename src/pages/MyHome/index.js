@@ -81,7 +81,13 @@ export default class MyScreen extends Component {
           </List.Item>
         </View>
 
-        <List.Item style={{ borderBottomWidth: 0 }} extra={<Icon name="right" fill="#abb0b5" size={14} />} size="default" paddingLeft={15} onPress={() => {}}>
+        <List.Item
+          style={{ borderBottomWidth: 0 }}
+          extra={<Icon name="right" fill="#abb0b5" size={14} />}
+          size="default"
+          paddingLeft={15}
+          onPress={() => navigation.replace('SignIn')}
+        >
           <View style={{ flexDirection: 'row' }}>
             <Icon xml={shezhi} size={25}></Icon>
             <Text style={{ fontSize: 16, marginLeft: 10, marginTop: 5 }}>设置</Text>

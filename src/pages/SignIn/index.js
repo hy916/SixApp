@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   header: {
-    paddingTop: 180,
+    paddingTop: '30%',
     paddingBottom: 50,
   },
   titie: {
