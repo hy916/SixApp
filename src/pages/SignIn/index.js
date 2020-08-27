@@ -46,7 +46,7 @@ class SigninScreen extends Component {
 
     return (
       <View style={styles.block}>
-        <ImageBackground source={require('../../utils/img/04.png')} style={{ flex: 1 }}>
+        <ImageBackground source={require('../../utils/img/05.png')} style={{ flex: 1 }}>
           {/* <StatusBar barStyle="light-content" /> */}
           {/* {
           !conf.production && <Flex justify="end">
@@ -59,8 +59,8 @@ class SigninScreen extends Component {
           <Flex align="center" direction="column" style={{ flex: 1 }}>
             <Flex justify="center" align="center" direction="column" style={styles.header}>
               <Avatar size={100} shape="circle" src={require('../../utils/img/01.png')} />
-              <H4 style={styles.titie}>Sign In</H4>
-              {!conf.production && <Text style={styles.hostNotice}>{hostType}</Text>}
+              {/* <H4 style={styles.titie}>Sign In</H4> */}
+              {/* {!conf.production && <Text style={styles.hostNotice}>{hostType}</Text>} */}
               {/* <P style={styles.description}>Enter username and password.</P> */}
             </Flex>
             <Flex align="center" direction="column" style={{ flex: 1 }}>
@@ -68,7 +68,7 @@ class SigninScreen extends Component {
                 <TextInput
                   value={formData.username}
                   autoCorrect={false}
-                  placeholderTextColor="#696969"
+                  placeholderTextColor="#fff"
                   placeholder="请输入用户名"
                   style={styles.input}
                   onChangeText={this.onChangeUserName}
@@ -79,6 +79,7 @@ class SigninScreen extends Component {
                   placeholder="请输入密码"
                   maxLength={12}
                   autoCompleteType="password"
+                  placeholderTextColor="#fff"
                   secureTextEntry={true}
                   style={styles.input}
                   onChangeText={this.onChangePassWord}
@@ -86,9 +87,8 @@ class SigninScreen extends Component {
                 <Spacing size={23} />
                 <Button
                   style={styles.button}
-                  textStyle={{ fontSize: 16, fontWeight: '200' }}
+                  textStyle={{ fontSize: 18, color: '#fff' }}
                   bordered={false}
-                  color="#cc00BFFF"
                   loading={loading.login}
                   disabled={loading.login}
                   onPress={this.onSubmit}
@@ -127,11 +127,11 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   header: {
-    paddingTop: 80,
-    paddingBottom: 20,
+    paddingTop: 180,
+    paddingBottom: 50,
   },
   titie: {
-    color: '#696969',
+    color: '#f4c900',
     marginTop: 26,
     marginBottom: 0,
   },
@@ -142,20 +142,19 @@ const styles = StyleSheet.create({
     fontWeight: '200',
   },
   input: {
-    width: 243,
-    backgroundColor: '#CCcccccc',
+    width: 220,
+    backgroundColor: 'rgba(178,178,178,0.4)',
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 6,
-    color: '#696969',
-    fontWeight: '200',
+    color: '#fff',
     fontSize: 16,
   },
   button: {
     // marginTop: 10,
     paddingHorizontal: 35,
     paddingVertical: 4,
-    backgroundColor: '#CCCCFF66',
+    backgroundColor: 'rgba(178,178,178,0.4)',
   },
   hostNotice: {
     right: -60,

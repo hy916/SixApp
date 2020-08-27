@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StatusBar, StyleSheet, SafeAreaView } from 'react-native';
+import { Text, StatusBar, StyleSheet, View, SafeAreaView, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import { Flex, Loader, H3, Icon } from '@uiw/react-native';
 import Global from '../../global';
@@ -20,8 +20,9 @@ class AuthLoadingScreen extends React.Component {
       return children(token);
     }
     return (
-      <SafeAreaView style={styles.container}>
-        <Flex direction="column" justify="center" align="center" style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <ImageBackground source={require('../../utils/img/03.png')} style={{ flex: 1 }} />
+        {/* <Flex direction="column" justify="center" align="center" style={{ flex: 1 }}>
           <StatusBar barStyle="light-content" />
           <Flex justify="center" align="center" direction="column" style={styles.header}>
             <Icon xml={logoLight} size={75} />
@@ -39,9 +40,9 @@ class AuthLoadingScreen extends React.Component {
             />
           </Flex>
           <Footer style={{ marginBottom: 20 }} />
-        </Flex>
-      </SafeAreaView>
-    )
+        </Flex> */}
+      </View>
+    );
   }
 }
 

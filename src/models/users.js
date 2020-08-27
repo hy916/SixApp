@@ -9,7 +9,7 @@ export default {
     remember: false, // Whether to remember password
     formData: {
       username: '腻霸霸🍎',
-      password: '',
+      password: '666666',
     },
   },
   reducers: {
